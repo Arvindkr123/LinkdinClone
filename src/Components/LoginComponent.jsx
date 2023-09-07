@@ -33,47 +33,63 @@ const LoginComponent = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <>
       <img src={logo} alt="linkedin logo" className="linkedinlogo" />
-      <div className="login-wrapper-inner">
-        <h1 className="heading">Sign in</h1>
-        <p className="sub-heading">Stay updated on your professional world</p>
-        <div className="auth-inputs">
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, email: event.target.value })
-            }
-            type="email"
-            className="common-input"
-            placeholder="Email or Phone"
-          />
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, password: event.target.value })
-            }
-            type="password"
-            className="common-input"
-            placeholder="Password"
-          />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop:"5rem"
+          // alignItems: "center",
+        }}
+      >
+        <div className="login-wrapper">
+          <div className="login-wrapper-inner">
+            <h1 className="heading">Sign in</h1>
+            <p className="sub-heading">
+              Stay updated on your professional world
+            </p>
+            <div className="auth-inputs">
+              <input
+                onChange={(event) =>
+                  setCredentials({ ...credentials, email: event.target.value })
+                }
+                type="email"
+                className="common-input"
+                placeholder="Email or Phone"
+              />
+              <input
+                onChange={(event) =>
+                  setCredentials({
+                    ...credentials,
+                    password: event.target.value,
+                  })
+                }
+                type="password"
+                className="common-input"
+                placeholder="Password"
+              />
+            </div>
+            <button onClick={submitHandler} type="submit" className="login-btn">
+              Sign in
+            </button>
+          </div>
+          <hr className="hr-text" data-content="or" />
+          <div className="google-btn-container">
+            <GoogleButton
+              onClick={googleSignIn}
+              className="google-btn"
+            ></GoogleButton>
+            <p className="gotoSignup">
+              New to Linkedin ?{" "}
+              <span className="join-now" onClick={() => navigate("/register")}>
+                Join now
+              </span>
+            </p>
+          </div>
         </div>
-        <button onClick={submitHandler} type="submit" className="login-btn">
-          Sign in
-        </button>
       </div>
-      <hr className="hr-text" data-content="or" />
-      <div className="google-btn-container">
-        <GoogleButton
-          onClick={googleSignIn}
-          className="google-btn"
-        ></GoogleButton>
-        <p className="gotoSignup">
-          New to Linkedin ?{" "}
-          <span className="join-now" onClick={() => navigate("/register")}>
-            Join now
-          </span>
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
 

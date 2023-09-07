@@ -3,7 +3,7 @@ import HomeComponent from "../Components/HomeComponent";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../FirebaseConfig";
 import { useNavigate } from "react-router-dom";
-import Loader from "../Components/common/Loader";
+import Loader from "../Components/common/Loader/Loader";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);

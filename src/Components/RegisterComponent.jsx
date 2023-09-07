@@ -36,50 +36,64 @@ export const Register = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <>
       <img src={logo} alt="linkedin logo" className="linkedinlogo" />
-      <div className="login-wrapper-inner">
-        <h1 className="heading">Make the most of your professional life</h1>
-        <div className="auth-inputs">
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, email: event.target.value })
-            }
-            type="email"
-            className="common-input"
-            placeholder="Email or Phone Number"
-          />
-          <input
-            onChange={(event) =>
-              setCredentials({ ...credentials, password: event.target.value })
-            }
-            type="password"
-            className="common-input"
-            placeholder="Password (6 or more characters)"
-          />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "5rem",
+          alignItems: "center",
+        }}
+      >
+        <div className="login-wrapper">
+          <div className="login-wrapper-inner">
+            <h1 className="heading">Make the most of your professional life</h1>
+            <div className="auth-inputs">
+              <input
+                onChange={(event) =>
+                  setCredentials({ ...credentials, email: event.target.value })
+                }
+                type="email"
+                className="common-input"
+                placeholder="Email or Phone Number"
+              />
+              <input
+                onChange={(event) =>
+                  setCredentials({
+                    ...credentials,
+                    password: event.target.value,
+                  })
+                }
+                type="password"
+                className="common-input"
+                placeholder="Password (6 or more characters)"
+              />
+            </div>
+            <button
+              style={{ marginLeft: "-30px"}}
+              onClick={submitHandler}
+              type="submit"
+              className="login-btn"
+            >
+              Agree & Join
+            </button>
+          </div>
+          <hr className="hr-text" data-content="or" />
+          <div className="google-btn-container">
+            <GoogleButton
+              onClick={googleSignIn}
+              className="google-btn"
+            ></GoogleButton>
+            <p className="gotoSignup">
+              Already on Linkedin ?{" "}
+              <span className="join-now" onClick={() => navigate("/")}>
+                Sign in
+              </span>
+            </p>
+          </div>
         </div>
-        <button
-          style={{ marginLeft: "-30px" }}
-          onClick={submitHandler}
-          type="submit"
-          className="login-btn"
-        >
-          Agree & Join
-        </button>
       </div>
-      <hr className="hr-text" data-content="or" />
-      <div className="google-btn-container">
-        <GoogleButton
-          onClick={googleSignIn}
-          className="google-btn"
-        ></GoogleButton>
-        <p className="gotoSignup">
-          Already on Linkedin ?{" "}
-          <span className="join-now" onClick={() => navigate("/")}>
-            Sign in
-          </span>
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
